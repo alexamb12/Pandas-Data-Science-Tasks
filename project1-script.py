@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 all_months_data = pd.DataFrame()
 
 # list all the files in the Sales_Data directory 
-files = [file for file in os.listdir('Pandas-Data-Science-Tasks/SalesAnalysis/Sales_Data/')]
+files = [file for file in os.listdir('SalesAnalysis/Sales_Data/')]
 
 # merge all the csv files into one csv
 for file in files:
-    df = pd.read_csv('Pandas-Data-Science-Tasks/SalesAnalysis/Sales_Data/' + file)
+    df = pd.read_csv('SalesAnalysis/Sales_Data/' + file)
     all_months_data = pd.concat([all_months_data , df])
 
 # create the new csv file that consists of all the data
@@ -106,7 +106,16 @@ all_data['Hour'] = all_data['Order Date'].dt.hour
 # print(all_data.head())
 
 hour_purchase = all_data.groupby('Hour')['Total Sales'].sum().reset_index()
-print(hour_purchase)
+# print(hour_purchase)
+# print(all_data.columns)
+
+# print(hour_purchase[hour_purchase['Total Sales'] == hour_purchase['Total Sales'].max()])
+
+# It seems that 7PM had the most sales and it the best time to put out advertisements
+
+
+
+
 
 
 
